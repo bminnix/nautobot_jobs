@@ -63,11 +63,11 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     continue
 
 
-                # try:
-                #     location, created = Location.objects.get_or_create(name=location_name, location_type=location_type)
-                # except Exception as err:
-                #     self.logger.error(f"Error creating location: {err}")
-                #     continue
+                try:
+                    location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type)
+                except Exception as err:
+                    self.logger.error(f"Error creating location: {err}")
+                    continue
         
         else:
             self.logger.error(f"Invalid import type: {import_type}")
