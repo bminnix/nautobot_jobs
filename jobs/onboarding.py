@@ -64,7 +64,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
 
 
                 try:
-                    location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type)
+                    location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type, status="active")
                     if created:
                         self.logger.info(f"Created location: {location.name}")
                     else:
