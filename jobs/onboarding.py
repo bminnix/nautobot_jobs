@@ -89,7 +89,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     if created:
                         self.logger.info(f"Created location: {loc_location.name}")
                     else:
-                        self.logger.info(f"Location already exists: {loc_location.name}")
+                        self.logger.info(f"Location already exists: {loc_location.name}-{location_type.name}")
                 except Exception as err:
                     self.logger.error(f"Error creating location: {err}")
                     continue
