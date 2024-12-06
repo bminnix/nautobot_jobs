@@ -26,7 +26,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
         csv_file_content = csv_file.read().decode("utf-8")
         csv_reader = csv.DictReader(io.StringIO(csv_file_content))
 
-        if self.import_type == "locations":
+        if self.import_type == "Locations":
             self.logger.info("Preparing to import locations from CSV file.")
             for row in csv_reader:
                 try:
