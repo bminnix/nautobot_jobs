@@ -26,7 +26,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
         csv_file_content = csv_file.read().decode("utf-8")
         csv_reader = csv.DictReader(io.StringIO(csv_file_content))
 
-        if import_type == "Locations":
+        if import_type == "locations":
             self.logger.info("Preparing to import locations from CSV file.")
             for row in csv_reader:
                 try:
@@ -63,5 +63,9 @@ class ImportWayneEnterprisesOnboardingData(Job):
                 # except Exception as err:
                 #     self.logger.error(f"Error creating location: {err}")
                 #     continue
+        
+        else:
+            self.logger.error(f"Invalid import type: {import_type}")
+            return
 
         self.logger.info("Imported Wayne Enterprises onboarding data from CSV file.")
