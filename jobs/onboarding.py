@@ -16,9 +16,9 @@ class ImportWayneEnterprisesOnboardingData(Job):
         description = "Import Wayne Enterprises onboarding data from a CSV file."
 
     def run(self, csv_file, **kwargs):
-        with open(csv_file, newline='') as csvfile:
-            reader = csv.reader(csvfile)
-            for row in reader:
-                print(row)
+        # with open(csv_file, newline='') as csvfile:
+        #     reader = csv.reader(csvfile)
+        #     for row in reader:
+        #         print(row)
 
         self.logger.info("Imported Wayne Enterprises onboarding data from CSV file.")
