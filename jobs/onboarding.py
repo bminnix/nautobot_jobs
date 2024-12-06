@@ -37,7 +37,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     name_type_split = row["name"].split("-")
                     city = row["city"]
                     state = row["state"]
-                    self.logger.info(f"Processing {city}, {state}")
+                    self.logger.info(f"Processing {name_type_split[0]} - {name_type_split[1]} for {city}, {state}")
                 except KeyError as err:
                     self.logger.error(f"Import file is missing a required column. {err}")
                     return                    
@@ -50,7 +50,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     # Assign the location name and location type
                     loc_name = name_type_split[0]
                     loc_type = location_types[name_type_split[1]]
-                    self.logger.info(f"Processing {loc_name} - {loc_type}")
+                    self.logger.info(f"Processing {loc_name}-{loc_type}")
                 except IndexError: # If the location name format is invalid
                     self.logger.error(f"Invalid location name format: {row['name']}.  Expected format is 'Location Name-Location Type'")
                     continue
