@@ -1,6 +1,6 @@
 from nautobot.dcim.models import Device, Location, LocationType
 from nautobot.extras.jobs import Job, FileVar, ChoiceVar
-from nautobot.core.models import Status
+from nautobot.extras.models import Status
 import csv
 import io
 
