@@ -27,7 +27,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
         location_types = {"BR": "Branch", "DC": "Data Center"}
         csv_file_content = csv_file.read().decode("utf-8")
         csv_reader = csv.DictReader(io.StringIO(csv_file_content))
-        active_status = Status.objects.get(name="active")
+        active_status = Status.objects.get(name="Active")
 
         if import_type == "locations":
             self.logger.info("Preparing to import locations from CSV file.")
