@@ -1,5 +1,5 @@
 from nautobot.core.celery import register_jobs
-from .onboarding import ImportWayneEnterprisesOnboardingData
+from . import ImportWayneEnterprisesOnboardingData
 
 jobs = [ImportWayneEnterprisesOnboardingData]
 
