@@ -22,11 +22,11 @@ class ImportWayneEnterprisesOnboardingData(Job):
         name = "Import Wayne Enterprises Onboarding Data"
         description = "Import Wayne Enterprises onboarding data from a CSV file."
 
-    def run(self, csv_file, **kwargs):
+    def run(self, csv_file, import_type, **kwargs):
         csv_file_content = csv_file.read().decode("utf-8")
         csv_reader = csv.DictReader(io.StringIO(csv_file_content))
 
-        if self.import_type == "Locations":
+        if import_type == "Locations":
             self.logger.info("Preparing to import locations from CSV file.")
             for row in csv_reader:
                 try:
