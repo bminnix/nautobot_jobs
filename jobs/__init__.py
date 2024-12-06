@@ -1,4 +1,3 @@
-from nautobot.apps.jobs import register_jobs
 from .onboarding import ImportWayneEnterprisesOnboardingData
 
-register_jobs(ImportWayneEnterprisesOnboardingData)
+__all__ = [ImportWayneEnterprisesOnboardingData]
