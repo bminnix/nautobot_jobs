@@ -3,4 +3,4 @@ from .onboarding import ImportWayneEnterprisesOnboardingData
 
 jobs = [ImportWayneEnterprisesOnboardingData]
 
-register_jobs(jobs)
+register_jobs(*jobs)
