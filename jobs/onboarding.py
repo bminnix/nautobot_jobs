@@ -5,20 +5,20 @@ import csv
 class ImportWayneEnterprisesOnboardingData(Job):
     """Import Wayne Enterprises onboarding data from a CSV file."""
     
-    # csv_file = FileVar(
-    #     label="CSV File",
-    #     description="Upload a CSV file with the relevant information.",
-    #     required=True,
-    # )
+    csv_file = FileVar(
+        label="CSV File",
+        description="Upload a CSV file with the relevant information.",
+        required=True,
+    )
 
     class Meta:
         name = "Import Wayne Enterprises Onboarding Data"
         description = "Import Wayne Enterprises onboarding data from a CSV file."
 
-    def run(self, **kwargs):
-        # with open(csv_file, newline='') as csvfile:
-        #     reader = csv.reader(csvfile)
-        #     for row in reader:
-        #         print(row)
+    def run(self, csv_file, *args, **kwargs):
+        with open(csv_file, newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                print(row)
 
         self.logger.info("Imported Wayne Enterprises onboarding data from CSV file.")
