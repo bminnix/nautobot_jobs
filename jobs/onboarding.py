@@ -1,4 +1,3 @@
-from nautobot.apps.jobs import register_jobs
 from nautobot.dcim.models import Device, Location, LocationType
 from nautobot.extras.jobs import Job, FileVar
 import csv
@@ -23,5 +22,3 @@ class ImportWayneEnterprisesOnboardingData(Job):
                 print(row)
 
         self.logger.info("Imported Wayne Enterprises onboarding data from CSV file.")
-
-register_jobs(ImportWayneEnterprisesOnboardingData)
