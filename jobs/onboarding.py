@@ -5,11 +5,11 @@ import csv
 class ImportWayneEnterprisesOnboardingData(Job):
     """Import Wayne Enterprises onboarding data from a CSV file."""
     
-    csv_file = FileVar(
-        label="CSV File",
-        description="Upload a CSV file with the relevant information.",
-        required=True,
-    )
+    # csv_file = FileVar(
+    #     label="CSV File",
+    #     description="Upload a CSV file with the relevant information.",
+    #     required=True,
+    # )
 
     class Meta:
         name = "Import Wayne Enterprises Onboarding Data"
