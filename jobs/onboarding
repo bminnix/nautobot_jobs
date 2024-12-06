@@ -20,3 +20,5 @@ class ImportWayneEnterprisesOnboardingData(Job):
             reader = csv.reader(csvfile)
             for row in reader:
                 print(row)
+
+        self.logger.info("Imported Wayne Enterprises onboarding data from CSV file.")
