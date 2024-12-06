@@ -85,11 +85,11 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     continue
                     
                 try:
-                    loc_location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type, status=active_status)
+                    loc_location, created = Location.objects.get_or_create(name=row["name"], location_type=location_type, status=active_status)
                     if created:
                         self.logger.info(f"Created location: {loc_location.name}")
                     else:
-                        self.logger.info(f"Location already exists: {loc_location.name}-{location_type.name}")
+                        self.logger.info(f"Location already exists: {row['name']}")
                 except Exception as err:
                     self.logger.error(f"Error creating location: {err}")
                     continue
