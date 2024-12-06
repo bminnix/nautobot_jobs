@@ -1,5 +1,6 @@
 from nautobot.dcim.models import Device, Location, LocationType
 from nautobot.extras.jobs import Job, FileVar, ChoiceVar
+from nautobot.core.models.statuses import Status
 import csv
 import io
 
@@ -64,7 +65,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
 
 
                 try:
-                    location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type, status="active")
+                    location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type, status=Status.objects.get(name="Active"))
                     if created:
                         self.logger.info(f"Created location: {location.name}")
                     else:
