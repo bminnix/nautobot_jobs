@@ -27,6 +27,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
         location_types = {"BR": "Branch", "DC": "Data Center"}
         csv_file_content = csv_file.read().decode("utf-8")
         csv_reader = csv.DictReader(io.StringIO(csv_file_content))
+        active_status = Status.objects.get(name="active")
 
         if import_type == "locations":
             self.logger.info("Preparing to import locations from CSV file.")
@@ -65,15 +66,34 @@ class ImportWayneEnterprisesOnboardingData(Job):
 
 
                 try:
-                    location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type, status=Status.objects.get(name="Active"))
+                    state_location, created = Location.objects.get_or_create(name=state, location_type=LocationType.objects.get(name="State"), status=active_status)
                     if created:
-                        self.logger.info(f"Created location: {location.name}")
+                        self.logger.info(f"Created state location: {state_location.name}")
                     else:
-                        self.logger.info(f"Location already exists: {location.name}")
+                        self.logger.info(f"State location already exists: {state_location.name}")
+                except Exception as err:
+                    self.logger.error(f"Error creating state location: {err}")
+                    continue
+
+                try:
+                    city_location, created = Location.objects.get_or_create(name=city, location_type=LocationType.objects.get(name="City"), status=active_status)
+                    if created:
+                        self.logger.info(f"Created city location: {city_location.name}")
+                    else:
+                        self.logger.info(f"City location already exists: {city_location.name}")
+                except Exception as err:
+                    self.logger.error(f"Error creating city location: {err}")
+                    continue
+                    
+                try:
+                    loc_location, created = Location.objects.get_or_create(name=loc_name, location_type=location_type, status=active_status)
+                    if created:
+                        self.logger.info(f"Created location: {loc_location.name}")
+                    else:
+                        self.logger.info(f"Location already exists: {loc_location.name}")
                 except Exception as err:
                     self.logger.error(f"Error creating location: {err}")
                     continue
-        
         else:
             self.logger.error(f"Invalid import type: {import_type}")
             return
