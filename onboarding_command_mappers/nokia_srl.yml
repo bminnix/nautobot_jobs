@@ -3,8 +3,8 @@ sync_devices:
   hostname:
     commands:
       - command: "show version | as json"
-        parser: "raw"
-        jpath: "basic system info['Hostname']"
+        parser: "none"
+        jpath: "basic system info.Hostname"
   # serial:
   #   commands:
   #     - command: "show version | as json"
