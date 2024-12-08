@@ -3,7 +3,7 @@ sync_devices:
   hostname:
     commands:
       - command: "show version | as json"
-        parser: "textfsm"
+        parser: "raw"
         jpath: "basic system info.Hostname"
   # serial:
   #   commands:
