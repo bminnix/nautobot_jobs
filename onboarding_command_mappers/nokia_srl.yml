@@ -3,15 +3,15 @@ sync_devices:
   hostname:
     commands:
       command: "show version | as json"
-      parser: "raw"
-      jpath: "basic system info.Hostname"
+      parser: "textfsm"
+      jpath: "[*].Hostname"
   serial:
     commands:
       command: "show version | as json"
-      parser: "raw"
-      jpath: "basic system info.Serial Number"
+      parser: "textfsm"
+      jpath: "[*].Serial Number"
   device_type:
     commands:
       command: "show version | as json"
-      parser: "raw"
-      jpath: "basic system info.Chassis Type"
+      parser: "textfsm"
+      jpath: "[*].Chassis Type"
