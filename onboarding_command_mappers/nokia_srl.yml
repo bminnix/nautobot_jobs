@@ -15,16 +15,3 @@ sync_devices:
       - command: "show version | as json"
         parser: "none"
         jpath: "basic system info.Chassis Type"
-  # mgmt_interface:
-  #   commands:
-  #     - command: "show interface all | as json"
-  #       parser: "raw"
-  #       jpath: "interfaces[?name=='mgmt0'].subinterfaces[0].address[?type=='IPv4'].prefix"
-  #       post_processor: "{{ obj | first | regex_replace('/.*$', '') }}"
-  # mask_length:
-  #   commands:
-  #     - command: "show interface all | as json"
-  #       parser: "raw"
-  #       jpath: "interfaces[?name=='mgmt0'].subinterfaces[0].address[?type=='IPv4'].prefix"
-  #       post_processor: "{{ obj | first | regex_replace('^.*/', '') }}"
-  #       iterable_type: "int"
