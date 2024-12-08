@@ -3,28 +3,28 @@ sync_devices:
   hostname:
     commands:
       - command: "show version | as json"
-        parser: "raw"
+        parser: "json"
         jpath: "basic system info.Hostname"
-  # serial:
-  #   commands:
-  #     - command: "show version | as json"
-  #       parser: "raw"
-  #       jpath: "basic_system_info.Serial_Number"
-  # device_type:
-  #   commands:
-  #     - command: "show version | as json"
-  #       parser: "raw"
-  #       jpath: "basic_system_info.Chassis_Type"
-  # mgmt_interface:
-  #   commands:
-  #     - command: "show interface all | as json"
-  #       parser: "raw"
-  #       jpath: "interfaces[?name=='mgmt0'].subinterfaces[0].address[?type=='IPv4'].prefix"
-  #       post_processor: "{{ obj | first | regex_replace('/.*$', '') }}"
-  # mask_length:
-  #   commands:
-  #     - command: "show interface all | as json"
-  #       parser: "raw"
-  #       jpath: "interfaces[?name=='mgmt0'].subinterfaces[0].address[?type=='IPv4'].prefix"
-  #       post_processor: "{{ obj | first | regex_replace('^.*/', '') }}"
-  #       iterable_type: "int"
+  serial:
+    commands:
+      - command: "show version | as json"
+        parser: "json"
+        jpath: "basic system info.Serial_Number"
+  device_type:
+    commands:
+      - command: "show version | as json"
+        parser: "json"
+        jpath: "basic system info.Chassis_Type"
+  mgmt_interface:
+    commands:
+      - command: "show interface all | as json"
+        parser: "json"
+        jpath: "interfaces[?name=='mgmt0'].subinterfaces[0].address[?type=='IPv4'].prefix"
+        post_processor: "{{ obj | first | regex_replace('/.*$', '') }}"
+  mask_length:
+    commands:
+      - command: "show interface all | as json"
+        parser: "json"
+        jpath: "interfaces[?name=='mgmt0'].subinterfaces[0].address[?type=='IPv4'].prefix"
+        post_processor: "{{ obj | first | regex_replace('^.*/', '') }}"
+        iterable_type: "int"
