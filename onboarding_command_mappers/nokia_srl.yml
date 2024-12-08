@@ -2,16 +2,16 @@
 sync_devices:
   hostname:
     commands:
-      - command: "show version | as json"
-        parser: "none"
-        jpath: "basic system info.Hostname"
+      command: "show version | as json"
+      parser: "none"
+      jpath: "basic system info.Hostname"
   serial:
     commands:
-      - command: "show version | as json"
-        parser: "none"
-        jpath: "basic system info.Serial Number"
+      command: "show version | as json"
+      parser: "none"
+      jpath: "basic system info.Serial Number"
   device_type:
     commands:
-      - command: "show version | as json"
-        parser: "none"
-        jpath: "basic system info.Chassis Type"
+      command: "show version | as json"
+      parser: "none"
+      jpath: "basic system info.Chassis Type"
