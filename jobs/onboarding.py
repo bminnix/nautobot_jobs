@@ -74,7 +74,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     continue
 
                 try:
-                    city_location, created = Location.objects.get_or_create(name=city, location_type=LocationType.objects.get(name="City"), status=active_status)
+                    city_location, created = Location.objects.get_or_create(name=city, location_type=LocationType.objects.get(name="City"), status=active_status, parent=state_location)
                     if created:
                         self.logger.info(f"Created city location: {city_location.name}")
                     else:
@@ -84,7 +84,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     continue
                     
                 try:
-                    loc_location, created = Location.objects.get_or_create(name=row["name"], location_type=location_type, status=active_status)
+                    loc_location, created = Location.objects.get_or_create(name=row["name"], location_type=location_type, status=active_status, parent=city_location)
                     if created:
                         self.logger.info(f"Created location: {loc_location.name}")
                     else:
