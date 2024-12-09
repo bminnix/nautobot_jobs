@@ -47,8 +47,7 @@ class ImportWayneEnterprisesOnboardingData(Job):
                     continue
 
                 try:
-                    # Assign the location name and location type
-                    loc_name = name_type_split[0]
+                    # Assign the location type based on the location name
                     loc_type = location_types[name_type_split[1]]
                 except IndexError: # If the location name format is invalid
                     self.logger.error(f"Invalid location name format: {row['name']}.  Expected format is 'Location Name-Location Type'")
