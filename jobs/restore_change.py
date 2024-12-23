@@ -23,7 +23,7 @@ class RestoreJob(Job):
     def run(self, change_id):
         changes = ObjectChange.objects.filter(request_id=change_id)
         for change in changes:
-            print(f"Restoring change {change.get_snapshots()}...")
+            print(f"Restoring change {change.get_snapshots()['differences']}...")
 
 
 register_jobs(RestoreJob)
