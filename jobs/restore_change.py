@@ -4,7 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 
 from nautobot.apps.jobs import register_jobs
 from nautobot.extras.jobs import Job, StringVar
-# from nautobot.extras.jobs import BooleanVar, ChoiceVar, FileVar, Job, ObjectVar, RunJobTaskFailed, StringVar, TextVar
+from nautobot.extras.models import ObjectChange
 
 
 class RestoreJob(Job):
@@ -21,6 +21,8 @@ class RestoreJob(Job):
         
 
     def run(self, change_id):
-        print(f"Restoring change {change_id}...")
+        change = ObjectChange.objects.get(id=change_id)
+        print(f"Restoring change {change.get_snapshots()}...")
+
 
 register_jobs(RestoreJob)
