@@ -21,7 +21,7 @@ class RestoreJob(Job):
         
 
     def run(self, change_id):
-        change = ObjectChange.objects.get(id=change_id)
+        change = ObjectChange.objects.get(request_id=change_id)
         print(f"Restoring change {change.get_snapshots()}...")
 
 
