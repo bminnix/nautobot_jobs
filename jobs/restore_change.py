@@ -12,7 +12,7 @@ class RestoreJob(Job):
     Restore an entire change from the change log.
     """
     name = "Restoration Jobs"
-    change_id = (max_length=255)
+    change_id = StringVar(description="The ID of the change to restore.")
     
     class Meta:
         name = "Restore from Change Log Job"
