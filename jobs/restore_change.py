@@ -14,12 +14,13 @@ class RestoreJob(Job):
     name = "Restoration Jobs"
     change_id = StringVar(description="The ID of the change to restore.")
     
+
     class Meta:
         name = "Restore from Change Log Job"
         description = "Restore an entire change from the change log."
         
 
-    def run(self, *args, **kwargs):
-        print("Restoring change...")
+    def run(self, change_id):
+        print(f"Restoring change {change_id}...")
 
 register_jobs(RestoreJob)
