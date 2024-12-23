@@ -1,10 +1,10 @@
 import importlib
 
 from django.contrib.contenttypes.models import ContentType
-from django.db import models
 
 from nautobot.apps.jobs import register_jobs
-from nautobot.extras.jobs import Job
+from nautobot.extras.jobs import Job, StringVar
+# from nautobot.extras.jobs import BooleanVar, ChoiceVar, FileVar, Job, ObjectVar, RunJobTaskFailed, StringVar, TextVar
 
 
 class RestoreJob(Job):
@@ -12,7 +12,7 @@ class RestoreJob(Job):
     Restore an entire change from the change log.
     """
     name = "Restoration Jobs"
-    change_id = models.CharField(max_length=255)
+    change_id = (max_length=255)
     
     class Meta:
         name = "Restore from Change Log Job"
