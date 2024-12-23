@@ -12,11 +12,12 @@ class RestoreJob(Job):
     Restore an entire change from the change log.
     """
     name = "Restoration Jobs"
+    change_id = models.CharField(max_length=255)
     
     class Meta:
         name = "Restore from Change Log Job"
         description = "Restore an entire change from the change log."
-        change_id = models.CharField(max_length=255)
+        
 
     def run(self, *args, **kwargs):
         print("Restoring change...")
