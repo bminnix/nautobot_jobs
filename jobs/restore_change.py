@@ -3,7 +3,8 @@ import importlib
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
-from nautobot.extras.jobs import Job, register_job
+from nautobot.apps.jobs import register_job
+from nautobot.extras.jobs import Job
 
 
 class RestoreJob(Job):
